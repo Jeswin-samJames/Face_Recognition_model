@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Recognition</title>
+    <style>
+        /* Style for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 950px;
+            max-height: 800px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            align-items: center; /* Center vertically */
+        }
+        .content{
+            text-align:center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+.image{
+    padding: 50px;
+}
+        
+
+       
+
+        /* Style for the header */
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* Style for the message */
+        .message {
+            text-align: center;
+            color: #000000;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .message.show-bg {
+            background-color: #4CAF50;
+        }
+        .forms{
+            align-items: center;
+            display:block;
+            padding: 50px;
+            
+            
+        }
+
+        /* Style for the buttons */
+        form {
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border:#333;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+            width: 200px;
+            height: 50px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1> Face Recognition</h1>
+        <div class="message">
+            {% if message %}
+            <p>{{ message }}</p>
+            
+        {% endif %} 
+        
+        </div>
+       
+        <div  class="content">
+            <div class="image">
+                <!-- Embed the Base64-encoded image -->
+                <img src="data:image/jpeg;base64,{{ base64_image }}" alt="Your Image" width="450">
+            </div>
+            <div class="forms">
+                <form action="/upload_image" method="POST">
+                    <input type="submit" value="Upload">
+                </form>
+                <form action="/extract_features" method="POST">
+                    <input type="submit" value="Extract Features">
+                </form>
+                <form action="/detect_faces" method="POST">
+                    <input type="submit" value="Detect Faces">
+                </form>
+            </div>
+           
+        </div>
+       
+    </div>
+    
+       
+</body>
+
+</html>
